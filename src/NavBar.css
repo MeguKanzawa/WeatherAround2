@@ -1,0 +1,78 @@
+.logoBar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px 8px;
+    gap: 10px;
+}
+
+.logoArea {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding:0.5rem;
+    padding-left: 0rem;
+}
+
+.logo {
+    width:3rem;
+    height:3rem;
+}
+
+.weatherAround {
+    font-weight: bold;
+    font-size: 2rem;
+
+    font-family: 'SF Pro Display';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 18px;
+
+    background: linear-gradient(90deg, #006FC8 0%, #D519C8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    padding:0rem;
+}
+
+.contactHelpArea {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 1rem;
+    gap: 1rem;
+    width:20rem;
+}
+
+.contact, .help {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    gap: 0.5rem;
+    width: rem;
+    height:3rem;
+
+}
+
+.contactLogo,
+.helpLogo {
+    width: 2rem;
+    height: 2rem;
+}
+
+.contactMe,
+.helpText {
+    font-family: 'SF Pro Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 13px;
+    color: #006FC8;
+
+}

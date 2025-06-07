@@ -1,0 +1,48 @@
+.directions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+}
+
+.pinImg {
+    width: 20px;
+    height: 20px;
+}
+
+.addPinText {
+
+    font-family: 'SF Pro Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    /* identical to box height */
+    display: flex;
+    align-items: center;
+
+    color: #006FC8;
+
+
+}
+
+.pinText {
+
+    font-family: 'SF Pro Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 18px;
+    /* identical to box height */
+    display: flex;
+    align-items: center;
+
+    background: linear-gradient(92.9deg, #32A3FF 15.48%, #D519C8 34.63%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+
+
+}

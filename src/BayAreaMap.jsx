@@ -81,7 +81,7 @@ export default function BayAreaMap({ onAreaSelect }) {
   }
 
   return (
-    <div style={{ height: '100%' }}>
+    <div style={{ flex: 1, height: '100%', border: "3px solid #7044C9", filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))", borderRadius: "18px" }}>
       <MapContainer
         style={{ height: '100%', width: '100%' }}
         center={[37.3541, -121.9552]}
@@ -102,7 +102,7 @@ export default function BayAreaMap({ onAreaSelect }) {
           <CircleMarker
             center={[clickedLocation.lat, clickedLocation.lng]}
             radius={10}
-            pathOptions={{ color: 'lightblue', fillColor: 'lightblue', fillOpacity: 0.5 }}
+            pathOptions={{ color: 'blue', fillColor: 'blue', fillOpacity: 0.5 }}
           />
         )}
       </MapContainer>
