@@ -3,6 +3,7 @@
 * {
   scrollbar-width: thin;
   scrollbar-color: white #793FC8;
+  scrollbar-snap-type: x mandatory;
 }
 
 
@@ -26,7 +27,7 @@
     font-family: 'SF Pro Display';
     font-style: normal;
     font-weight: 500;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     line-height: 24px;
     /* identical to box height */
     text-align: center;
@@ -110,7 +111,7 @@
     font-family: 'SF Pro Display';
     font-style: normal;
     font-weight: 500;
-    font-size: 13px;
+    font-size: 0.9rem;
     line-height: 16px;
     color: #D519C8;
     order:1;
@@ -121,13 +122,13 @@
     font-family: 'SF Pro Display';
     font-style: normal;
     font-weight: 500;
-    font-size: 13px;
+    font-size: 0.9rem;
     line-height: 16px;
     color: #006FC8;
     text-align:left;
 }
 
-.deleteButton {
+.favButton {
     width:2rem;
     height:2rem;
     position:absolute;

@@ -12,7 +12,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const API_KEY = '6d3d00323f6dd5b83392fa54db270c66';
 
-const WeatherPanel = ({ location }) => {
+const WeatherPanel = ({ location, onFavorite }) => {
   const [weatherTiles, setWeatherTiles] = useState([]);
 
   useEffect(() => {
@@ -103,7 +103,7 @@ const getWeatherIcon = (weatherMain, description) => {
               filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",
               borderRadius: '18px',
               alignSelf: 'stretch',
-              border: '3px solid #006FC8',
+              border: '5px solid #006FC8',
               height: '35vh',
               marginBottom: '0.5rem'
             }}
@@ -129,7 +129,9 @@ const getWeatherIcon = (weatherMain, description) => {
                 </div>
               </div>
             </div>
-            <button onClick={() => handleRemoveTile(tile.id)} className="deleteButton" aria-label="Remove tile">
+            <button onClick={() => onFavorite({ lat: location.lat, lon: location.lon, name: tile.name })}
+                  className="favButton"
+                  aria-label="Add to favorites">
               <img src={heart} className="heart"></img>
             </button>
           </motion.div>

@@ -37,7 +37,7 @@ export default function BayAreaMap({ onAreaSelect }) {
           height: '100%',
           width: '100%',
           boxSizing: 'border-box',
-          border: '3px solid #7044C9',
+          border: '5px solid #7044C9',
           filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))',
           borderRadius: '18px'
         }}
