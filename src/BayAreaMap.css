@@ -1,0 +1,3 @@
+.leaflet-container.custom-cursor {
+  cursor: url('./assets/pin.svg') 15 30, auto;
+}

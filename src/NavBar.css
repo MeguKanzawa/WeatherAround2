@@ -40,17 +40,18 @@
     
 }
 
-.contactHelpArea {
+.contactArea, .helpArea, .techArea {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
     padding: 1rem;
     gap: 1rem;
-    width:20rem;
+    width:5rem;
 }
 
-.contact, .help {
+
+.contact, .help, .tech {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -63,18 +64,83 @@
 }
 
 .contactLogo,
-.helpLogo {
+.helpLogo, .techLogo {
     width: 2rem;
     height: 2rem;
 }
 
 .contactMe,
-.helpText {
+.helpText, .techText {
     font-family: 'SF Pro Display';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 13px;
     color: #006FC8;
+}
 
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(183, 105, 105, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modalContent {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 300px;
+    max-width: 90%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    z-index: 1001;
+    text-align: center;
+    font-family: 'SF Pro Display', sans-serif;
+}
+
+.modalContent h2 {
+    color: #006FC8;
+    margin-bottom: 1rem;
+}
+
+.modalContent p,
+.modalContent li {
+    font-size: 14px;
+    margin-bottom: 0.5rem;
+    text-align: left;
+}
+
+.modalContent li::marker {
+    color:#D519C8;
+}
+
+.modalContent button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(to right, #006FC8, #D519C8);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+}
+
+.contact,
+.help,
+.tech {
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    border-radius: 10px;
+}
+
+.contact:hover,
+.help:hover, 
+.tech:hover {
+    background-color: rgba(0, 111, 200, 0.1); /* light blue highlight */
+    transform: scale(1.05);
 }

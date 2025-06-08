@@ -3,25 +3,78 @@ import './NavBar.css';
 import logo from './assets/logo.svg';
 import contact from './assets/contact.svg';
 import help from './assets/help.svg';
+import tech from './assets/laptop.svg'
 
 function NavBar() {
+    const [showContact, setShowContact] = useState(false);
+    const [showHelp, setShowHelp] = useState(false);
+    const [showTech, setShowTech] = useState(false);
     return (
         <div className="logoBar">
             <div className="logoArea">
                 <img src={logo} alt="logo" className="logo" />
                 <div className="weatherAround">Weather Around You</div>
             </div>
-            <div className="contactHelpArea">
-                <div className="contact">
+            <div className="techArea">
+                <div className="tech" onClick={() => setShowTech(true)}>
+                    <img src={tech} alt="Technologies" className="techLogo" />
+                    <div className="techText">Technologies</div>
+                </div>
+            </div>
+            <div className="contactArea">
+                <div className="contact" onClick={() => setShowContact(true)}>
                     <img src={contact} alt="Contact" className="contactLogo" />
                     <div className="contactMe">Contact Me</div>
                 </div>
             </div>
-            <div className="help">
-                <img src={help} alt="Help" className="helpLogo" />
-                <div className="helpText">Help</div>
+            <div className = "helpArea">
+                <div className="help" onClick = {() => setShowHelp(true)}>
+                    <img src={help} alt="Help" className="helpLogo" />
+                    <div className="helpText">Help</div>
+                </div>
             </div>
-        </div>
+             {/* Contact Modal */}
+            {showTech && (
+                <div className="modalOverlay" onClick={() => setShowTech(false)}>
+                    <div className="modalContent" onClick={(e) => e.stopPropagation()}>
+                        <h2>Technologies Used</h2>
+                        <li>ReactJS, Vite, NodeJS</li>
+                        <li>Leaflet API, OpenWeatherAPI</li>
+                        <li>Figma, LucidUI</li>
+                        <li>Framer-Motion</li>
+                        <button onClick={() => setShowTech(false)}>CLOSE</button>
+                    </div>
+                </div>
+            )}
+
+            {/* Contact Modal */}
+            {showContact && (
+                <div className="modalOverlay" onClick={() => setShowContact(false)}>
+                    <div className="modalContent" onClick={(e) => e.stopPropagation()}>
+                        <h2>Contact Me</h2>
+                        <p>Email: megknzw@gmail.com</p>
+                        <p>LinkedIn: https://www.linkedin.com/in/megu-kanz/</p>
+                        <button onClick={() => setShowContact(false)}>CLOSE</button>
+                    </div>
+                </div>
+            )}
+
+            {/* Help Modal */}
+            {showHelp && (
+                <div className="modalOverlay" onClick={() => setShowHelp(false)}>
+                    <div className="modalContent" onClick={(e) => e.stopPropagation()}>
+                        <h2>How to Use</h2>
+                        <ul>
+                            <li>Click on a location to fetch weather data.</li>
+                            <li>Weather tiles will appear on the top with animations.</li>
+                            <li>You can FAVORITE any of the locations by clicking on the heart</li>
+                            <li>All of your favorites will show up at the bottom of the page</li>
+                        </ul>
+                        <button onClick={() => setShowHelp(false)}>CLOSE</button>
+                    </div>
+                </div>
+            )}
+        </div>        
     );
 }
 
