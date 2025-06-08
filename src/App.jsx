@@ -16,36 +16,30 @@ function App() {
   return (
  
     // Root / AllContents
-    <div style={{ display: 'flex', width: '100vw', height: '100vh', flexDirection: 'column', alignItems: 'flex-start'}}>
+    <div style={{ display: 'flex', width: '90vw', height: '100vh', flexDirection: 'column', alignItems: 'center'}}>
       {/* For Nav Bar */}
-      <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'stretch', gap: '10rem' }}>
+      <div style={{border: '2px dashed red', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'stretch', gap: '1rem', width:'100%', height:'15%'}}>
         <NavBar></NavBar>
       </div>
       {/* Direction + Center */}
-      <div style = {{display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: '0rem'}}>
+      <div style = {{display: 'flex', width: '100%', height: '80vh', flexDirection: 'column', alignItems: 'flex-start', maxHeight: '80vh'}}>
         {/* Direction */}
-        <div style = {{marginTop: '1rem', display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
+        <div style = {{border: '2px dashed red', width: '100%', marginTop: '1rem', display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
           <Directions></Directions>
         </div>
-        {/* Center */}
-        <div style = {{display: 'flex', flexDirection: 'row', alignItems: 'center', padding: '0rem', gap: '10rem', alignSelf: 'stretch'}}>
-          {/* Bay Area Map */}
-          <div style = {{display: 'flex', width: "50vw", flexDirection: 'row', alignItems: 'center', padding: '1rem',  gap: '5rem', alignSelf: 'stretch', height: '100%'}}>
+        {/* Center */}  
+        <div style = {{display: 'flex', width: '100%', height: '72vh', flexDirection: 'row', alignItems: 'flex-start', padding: '0rem', margin: '0', maxHeight: '72vh'}}>
+          {/* Bay Area Map Panel */}
+          <div style = {{border: '2px dashed red', height: '90vh', width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: '0.2rem',  gap: '0rem', alignSelf: 'stretch', height: '100%', maxHeight: '90vh'}}>
             <BayAreaMap onAreaSelect={setLocation}/>
           </div>
           {/* Weather Panel / All Tiles */}
-          <div style={{flex: 1, display: 'flex', flexDirection: 'column',
-            minWidth: 0,
-            overflowY: 'auto',
-            border: '1px solid #ccc',
-            padding: '1rem',
-            height: '100%',}}>
+          <div style={{border: '2px dashed red', width: '100%', display: 'flex', flexDirection: 'column',
+            height: '100%', padding: '0.2rem', maxHeight: '100%', overflow: 'auto'}}>
             <WeatherPanel location={location} />
           </div>
         </div>
       </div>
-
-
 
       {/* <div style={{ flex: 1, height: '100%' }}>
         <div className="top-bar">
@@ -87,4 +81,5 @@ function App() {
 }
 
 export default App;
+
 

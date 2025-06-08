@@ -9,8 +9,8 @@ function NavBar() {
         <div className="logoBar">
             <div className="logoArea">
                 <img src={logo} alt="logo" className="logo" />
+                <div className="weatherAround">Weather Around You</div>
             </div>
-            <div className="weatherAround">Weather Around You</div>
             <div className="contactHelpArea">
                 <div className="contact">
                     <img src={contact} alt="Contact" className="contactLogo" />

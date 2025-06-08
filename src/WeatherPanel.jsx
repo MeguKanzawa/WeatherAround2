@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import sunwind from './assets/Sunny and windy.svg'
+import './WeatherPanel.css'
 
 const API_KEY = '6d3d00323f6dd5b83392fa54db270c66';
 
@@ -57,33 +58,35 @@ const WeatherPanel = ({ location }) => {
   }
 
   return (
-  <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: '1rem'}}>
+  <div style={{position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: '0rem', height: '100%', width: '100%'}}>
     {weatherTiles.map(tile => (
-      <div key={tile.id} style = {{boxSizing: 'border-box', display: 'flex', flexDirection: 'center', justifyContent: 'center', alignItems: 'center', padding: "1rem", filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))", borderRadius: '18px'}}>
+      <div key={tile.id} style = {{boxSizing: 'border-box', display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', padding: "0rem", filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))", borderRadius: '18px', alignSelf: 'stretch', border: '3px solid #006FC8', height: '35vh', marginBottom: '0.5rem'}}>
         <div className = "tileLeft">
           <h2 className = "locationText">
             {tile.name}
           </h2>
-          <img src ={sunwind} className = "weatherImg"></img>
+          <img src ={sunwind} className = "weatherImg" style = {{outline: '2px solid red'}} alt = "Weather Image"></img>
         </div>
         <div className = "tileRight">
-          <h2 className = "temperatureText">
-            {tile.weather.main.temp}°C
-          </h2>
-          <div className = "tileRightRow">
-            <p className = "tileRightRowRight"><strong>Humidity </strong></p>
-            <p className = "tileRightRowLeft"><strong> {tile.weather.main.humidity}%</strong></p>
+          <div className = "tileRightTop">
+            <h2 className = "temperatureText">
+              {Math.round(tile.weather.main.temp)}<span className = "degree">&nbsp;°C&nbsp;</span>
+            </h2>
           </div>
-          <div className = "tileRightRow">
-            <p className = "tileRightRowRight"><strong>Condition: </strong></p>
-            <p className = "tilerightRowLeft"><strong> {tile.weather.weather[0].description}</strong></p>
+          <div className = "tileRightButtom">
+            <div className = "tileRightLeft">
+              <p className = "tileRightLeftText"><strong>Humidity</strong></p>
+              <p className = "tileRightLeftText"><strong>Condition</strong></p>
+            </div>
+            <div className = "tileRightRight">
+              <p className = "tileRightRightText"><strong> {tile.weather.main.humidity}%</strong></p>
+              <p className = "tileRightRightText"><strong> {tile.weather.weather[0].description}</strong></p>
+            </div>
           </div>
         </div>
-        <div className = "deleteButtonArea">
-          <button onClick={() => handleRemoveTile(tile.id)} className = "deleteButton" aria-label="Remove tile">
-            <p className = "x">x</p>
-          </button>
-        </div>
+        <button onClick={() => handleRemoveTile(tile.id)} className = "deleteButton" aria-label="Remove tile">
+          <p className = "x">x</p>
+        </button>
       </div>
     ))}
   </div>
@@ -91,6 +94,9 @@ const WeatherPanel = ({ location }) => {
 };
 
 export default WeatherPanel;
+/* Tile */
+
+
 
 // <h2 className="text-lg font-semibold mb-1">
 //           {tile.name}
@@ -109,3 +115,14 @@ export default WeatherPanel;
 //         <p><strong>Temperature:</strong> {tile.weather.main.temp}°C</p>
 //         <p><strong>Humidity:</strong> {tile.weather.main.humidity}%</p>
 //         <p><strong>Condition:</strong> {tile.weather.weather[0].description}</p>
+
+
+        // <div className = "tileRightRow">
+        //   <p className = "tileRightRowLeft"><strong>Humidity </strong></p>
+        //   <p className = "tileRightRowRight"><strong> {tile.weather.main.humidity}%</strong></p>
+        // </div>
+        // <div className = "tileRightRow">
+        //   <p className = "tileRightRowLeft"><strong>Condition: </strong></p>
+        //   <p className = "tileRightRowRight"><strong> {tile.weather.weather[0].description}</strong></p>
+        // </div>
+

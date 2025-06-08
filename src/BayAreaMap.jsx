@@ -24,7 +24,7 @@ import 'leaflet/dist/leaflet.css';
 // };
 
 export default function BayAreaMap({ onAreaSelect }) {
-  const [clickedLocation, setClickedLocation] = useState(null); // ✅ Add this line
+  const [clickedLocation, setClickedLocation] = useState(null); 
 
   // const geoJsonStyle = {
   //   fillColor: 'orange',
@@ -81,9 +81,9 @@ export default function BayAreaMap({ onAreaSelect }) {
   }
 
   return (
-    <div style={{ flex: 1, height: '100%', border: "3px solid #7044C9", filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))", borderRadius: "18px" }}>
+    <div style={{ flex: 1, width: '100%', boxSizing: 'border-box'}}>
       <MapContainer
-        style={{ height: '100%', width: '100%' }}
+        style={{ height: '100%', width: '100%', boxSizing: 'border-box', border: "3px solid #7044C9", filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))", borderRadius: "18px" }}
         center={[37.3541, -121.9552]}
         zoom={12}
         scrollWheelZoom={true}
