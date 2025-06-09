@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import cloudy from './assets/cloudy.svg';
 import sunny from './assets/sunny.svg';
@@ -12,8 +12,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const API_KEY = '6d3d00323f6dd5b83392fa54db270c66';
 
-const WeatherPanel = ({ location, onFavorite, isFahrenheit }) => {
+const WeatherPanel = ({ location, onFavorite, isFahrenheit, favoriteBtnRef }) => {
   const [weatherTiles, setWeatherTiles] = useState([]);
+
 
   useEffect(() => {
     if (!location) return;
@@ -132,7 +133,7 @@ const getWeatherIcon = (weatherMain, description) => {
                 </div>
               </div>
             </div>
-            <button onClick={() => {const [lat, lon] = tile.id.split(',').map(Number);
+            <button ref = {favoriteBtnRef} onClick={() => {const [lat, lon] = tile.id.split(',').map(Number);
                   onFavorite({ lat, lon, name: tile.name })}}   
                   className="favButton"
                   aria-label="Add to favorites">

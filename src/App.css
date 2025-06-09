@@ -74,7 +74,7 @@ body {
 
 .tooltip {
   position: absolute;
-  background-color: black;
+  background-color: #006FC8;
   color: white;
   padding: 0.6rem 1rem;
   border-radius: 8px;
@@ -95,7 +95,7 @@ body {
 .tooltip[data-position='top']::after {
   bottom: -12px;
   left: calc(50% - 6px);
-  border-color: black transparent transparent transparent;
+  border-color: #006FC8 transparent transparent transparent;
 }
 
 .tooltip[data-position='bottom']::after {
