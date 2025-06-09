@@ -1,3 +1,4 @@
+/* entire page styling */
 html, body, #root {
   display: flex;
   flex-direction: column;
@@ -36,6 +37,7 @@ body {
   font-style: normal;
 }
 
+/* overall component styling */
 .footer {
   height: 20vh;
   width: 100vw;
@@ -72,6 +74,7 @@ body {
   box-sizing: border-box;
 }
 
+/* tooltip styling */
 .tooltip {
   position: absolute;
   background-color: #006FC8;
@@ -104,8 +107,7 @@ body {
   border-color: transparent transparent black transparent;
 }
 
-
-/* Make map and weather panels stack vertically on mobile */
+/* Mobile friendly styling below */
 @media screen and (max-width: 768px) {
   #root {
     padding:1rem;

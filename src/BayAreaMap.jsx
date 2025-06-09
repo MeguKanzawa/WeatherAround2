@@ -13,7 +13,9 @@ import {Marker} from 'react-leaflet';
 import './BayAreaMap.css';
 
 export default function BayAreaMap({ onAreaSelect }) {
+  // stores the clicked location and the function that gets triggered
   const [clickedLocation, setClickedLocation] = useState(null); 
+  // handles clicks
   function ClickHandler({ onMapClick }) {
     useMapEvents({
       click(e) {
@@ -29,8 +31,10 @@ export default function BayAreaMap({ onAreaSelect }) {
     return null;
   }
 
+  // returns the components for the Leaflet
   return (
     <div style={{ flex: 1, width: '100%', boxSizing: 'border-box'}}>
+      {/* overall map component */}
       <MapContainer
         className="custom-cursor"
         style={{
@@ -45,10 +49,13 @@ export default function BayAreaMap({ onAreaSelect }) {
         zoom={12}
         scrollWheelZoom={true}
       >
+        {/* base map component */}
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution="&copy; OpenStreetMap contributors"
         />
+
+        {/* click action */}
         <ClickHandler onMapClick={onAreaSelect} />
         {clickedLocation && (
           <Marker
@@ -61,6 +68,7 @@ export default function BayAreaMap({ onAreaSelect }) {
   );
 }
 
+// make the cursor the pin image
 const pinIcon = new L.DivIcon({
   html: `<img src="${pin}" style="width: 2rem; height: 2rem;" alt="marker"/>`,
   iconSize: [30, 30],

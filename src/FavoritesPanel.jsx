@@ -9,6 +9,7 @@ import windy from './assets/windy.svg';
 import rainy from './assets/rainy.svg';
 import heart from './assets/heart-plus.svg'
 
+// FOR FUTURE: ADD IN ENV! This is just for easy access
 const API_KEY = '6d3d00323f6dd5b83392fa54db270c66';
 
 const FavoritesPanel = ({ favorites, isFahrenheit}) => {
@@ -17,6 +18,7 @@ const FavoritesPanel = ({ favorites, isFahrenheit}) => {
   const [direction, setDirection] = useState('next');
   const [slideKey, setSlideKey] = useState(0);
 
+  // fetch the weather data from the favorited location
   useEffect(() => {
     const fetchAll = async () => {
       const data = await Promise.all(
@@ -45,7 +47,7 @@ const FavoritesPanel = ({ favorites, isFahrenheit}) => {
     }
   }, [favorites]);
 
-
+// determine which weather icon to show
   const getWeatherIcon = (weatherMain, description) => {
     const main = weatherMain.toLowerCase();
     const desc = description.toLowerCase();
@@ -63,6 +65,7 @@ const FavoritesPanel = ({ favorites, isFahrenheit}) => {
     return cloudy; // fallback
   };
   
+  // handles carousel prev/next actions
   const handlePrev = () => {
     setDirection('prev');
     setSlideKey((prev) => prev + 1); // force remount
@@ -77,13 +80,17 @@ const FavoritesPanel = ({ favorites, isFahrenheit}) => {
 
   const entry = weatherData[activeIndex];
 
+// return components
   return (
     <div className="favorites-panel">
       <h2 className="carousel-title">Favorite Locations</h2>
       {entry && (
+        // overall carousel container
         <div className="carousel-container">
+            {/* previous element in carousel */}
           <button className="carousel-button" onClick={handlePrev}>◀</button>
           <div key={slideKey} className={`favorite-tile carousel-slide ${direction}`}>
+            {/* this element can collapse into columns when in mobile mode */}
             <div className = "top-row">
                 <div className = "carouselLeft">
                     <h3>{entry.name}</h3>
@@ -97,6 +104,7 @@ const FavoritesPanel = ({ favorites, isFahrenheit}) => {
                     </p>
                     <img src={getWeatherIcon(entry.current.weather[0].main, entry.current.weather[0].description)} className="weatherImgFav" alt="Weather Image" />
                 </div>
+                {/* flexible with degree conversion */}
                 <div className = "carouselMiddle">
                     <p className = "temperatureText">
                         {isFahrenheit
@@ -108,6 +116,7 @@ const FavoritesPanel = ({ favorites, isFahrenheit}) => {
                     <p className = "carouselSubText"><strong>Condition:</strong> {entry.current.weather[0].description}</p>
                 </div>
             </div>
+            {/* shows the forecast of the next few hours of this location in detail */}
             <div className="forecast-row">
                 {entry.forecast.map((f, i) => (
                   <div className="forecast-col" key={i}>
@@ -123,7 +132,7 @@ const FavoritesPanel = ({ favorites, isFahrenheit}) => {
             </div>
             
           </div>
-
+                {/* next element in carousel */}
           <button className="carousel-button" onClick={handleNext}>▶</button>
         </div>
       )}

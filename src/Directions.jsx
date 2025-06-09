@@ -2,6 +2,7 @@ import React from 'react';
 import './Directions.css';
 import pin from './assets/pin.svg';
 
+// includes components of Directions + degrees conversion function
 function Directions({ isFahrenheit, toggleTempUnit }) {
   return (
     <div className="directions">

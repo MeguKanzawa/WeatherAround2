@@ -8,10 +8,12 @@ import linkedin from './assets/linkedin.svg'
 import email from './assets/mail.svg'
 
 function NavBar() {
+    // opens a mini window for all three of the tabs on the top right
     const [showContact, setShowContact] = useState(false);
     const [showHelp, setShowHelp] = useState(false);
     const [showTech, setShowTech] = useState(false);
     return (
+        // the top left area: logo, not interactable
         <div className="logoBar">
             <div className="logoArea">
                 <img src={logo} alt="logo" className="logo" />
@@ -35,15 +37,18 @@ function NavBar() {
                     <div className="helpText">Help</div>
                 </div>
             </div>
-             {/* Contact Modal */}
+            {/* interactable menus, opens a mini window using modalOverlay*/}
+             {/* Tech Modal */}
             {showTech && (
                 <div className="modalOverlay" onClick={() => setShowTech(false)}>
                     <div className="modalContent" onClick={(e) => e.stopPropagation()}>
                         <h2>Technologies Used</h2>
-                        <li>ReactJS, Vite, NodeJS</li>
-                        <li>Leaflet API, OpenWeatherAPI</li>
-                        <li>Figma, LucidUI</li>
-                        <li>Framer-Motion</li>
+                        <li>Frameworks/Libraries: ReactJS, Vite, NodeJS</li>
+                        <li>APIs: Leaflet API, OpenWeatherAPI</li>
+                        <li>Graphics: <a href = "https://www.figma.com/@zvosh">Weather Icons</a></li>
+                        <li>Other Graphics: Figma, LucidUI</li>
+                        <li>Animation: Framer-Motion</li>
+                        <li>Mobile friendly, Tooltips implemented</li>
                         <button onClick={() => setShowTech(false)}>CLOSE</button>
                     </div>
                 </div>

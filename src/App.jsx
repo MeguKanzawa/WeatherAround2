@@ -14,16 +14,21 @@ function App() {
     lat: 37.3541,
     lon: -121.9552,
   });
+  // states and references for favorite, map, weather functionality
   const [favorites, setFavorites] = useState([]);
+  const favoriteBtnRef = useRef(null);
   const favoritesRef = useRef(null);
   const mapRef = useRef(null);
   const weatherRef = useRef(null);
-  const [tooltipStep, setTooltipStep] = useState(0);
+
+  // toggle between F and C
   const [isFahrenheit, setIsFahrenheit] = useState(true);
   const toggleTempUnit = () => setIsFahrenheit(prev => !prev);
-  const favoriteBtnRef = useRef(null);
 
+  // tooltip states
+  const [tooltipStep, setTooltipStep] = useState(0);
 
+  // snaps the web view to the Favorite Panel below the Center area when the user clicks favorite
   const addFavorite = (loc) => {
     if (!favorites.some(f => f.lat === loc.lat && f.lon === loc.lon)) {
       setFavorites(prev => [...prev, loc]);
@@ -33,6 +38,8 @@ function App() {
     }, 300);
   };
 
+  // tooltip effect
+  // when the user clicks on space, it moves to the next tooltip
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.code === 'Space') {
@@ -55,7 +62,7 @@ function App() {
     };
   }, []);
 
-
+  // return the components
   return (
     <div
       style={{
@@ -65,6 +72,7 @@ function App() {
       }}
     >
 
+      {/* the main section where the Directions and Center exist in */}
       <section
         style={{
           height: '100vh',
@@ -79,16 +87,19 @@ function App() {
         }}
       >
 
+        {/* Nav bar component */}
         <div style={{ width: '100%', height: '15%', minHeight: '60px' }}>
           <NavBar />
         </div>
 
+        {/* Directions component */}
         <div style={{ width: '100%', marginTop: '2rem' }}>
           <Directions isFahrenheit={isFahrenheit} toggleTempUnit={toggleTempUnit} />
         </div>
 
-        {/* Center */}
+        {/* Center Component */}
         <div className="center">
+          {/* BayAreaMap component */}
           <div
             className="map-panel"
             ref={mapRef}
@@ -104,6 +115,7 @@ function App() {
             <BayAreaMap onAreaSelect={setLocation} />
           </div>
 
+            {/* Weather Panel component */}
           <div
             className="weather-panel"
             ref={weatherRef}
@@ -131,7 +143,8 @@ function App() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: "spring", stiffness: 300, damping: 10 }}
         >
-          Click anywhere on the map to investigate a location.
+          Click anywhere on the map to investigate a location.<br></br>
+          When you are ready, hit SPACE
         </motion.div>
       )}
 
@@ -159,7 +172,7 @@ function App() {
       )}
 
       </section>
-
+      {/* Favorite Locations component: shows up when user clicks on favorite button */}
       {favorites.length > 0 && (
         <section ref={favoritesRef} className="favorite-snap">
           <FavoritesPanel favorites={favorites} isFahrenheit={isFahrenheit} />
@@ -174,6 +187,7 @@ function App() {
   );
 }
 
+// Determine tooltip positioning
 function getTooltipPosition(refEl, position = "top") {
   const rect = refEl.getBoundingClientRect();
   const offset = 10;

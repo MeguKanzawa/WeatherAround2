@@ -10,12 +10,13 @@ import heart from './assets/heart-plus.svg'
 import './WeatherPanel.css';
 import { motion, AnimatePresence } from 'framer-motion';
 
+// FOR FUTURE: ADD IN ENV! This is just for easy access
 const API_KEY = '6d3d00323f6dd5b83392fa54db270c66';
 
 const WeatherPanel = ({ location, onFavorite, isFahrenheit, favoriteBtnRef }) => {
   const [weatherTiles, setWeatherTiles] = useState([]);
 
-
+  // fetches the basic weather information of the clicked on location
   useEffect(() => {
     if (!location) return;
 
@@ -57,10 +58,12 @@ const WeatherPanel = ({ location, onFavorite, isFahrenheit, favoriteBtnRef }) =>
     fetchWeather();
   }, [location]);
 
+  // removes previous tiles
   const handleRemoveTile = (id) => {
     setWeatherTiles(prev => prev.filter(tile => tile.id !== id));
   };
 
+  // finds weather image to use
 const getWeatherIcon = (weatherMain, description) => {
   const main = weatherMain.toLowerCase();
   const desc = description.toLowerCase();
@@ -83,8 +86,10 @@ const getWeatherIcon = (weatherMain, description) => {
     return <p className="p-4">Click on a region to view weather info.</p>;
   }
 
+  // return the components
   return (
     <div className="weather_tile_container" style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: '0rem', height: '100%', width: '100%' }}>
+      {/* animation for the weather tiles showing up on the top when they are added */}
       <AnimatePresence>
         {weatherTiles.map((tile, index) => (
           <motion.div
@@ -133,6 +138,7 @@ const getWeatherIcon = (weatherMain, description) => {
                 </div>
               </div>
             </div>
+            {/* button to favorite locations */}
             <button ref = {favoriteBtnRef} onClick={() => {const [lat, lon] = tile.id.split(',').map(Number);
                   onFavorite({ lat, lon, name: tile.name })}}   
                   className="favButton"
