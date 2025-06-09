@@ -12,7 +12,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const API_KEY = '6d3d00323f6dd5b83392fa54db270c66';
 
-const WeatherPanel = ({ location, onFavorite }) => {
+const WeatherPanel = ({ location, onFavorite, isFahrenheit }) => {
   const [weatherTiles, setWeatherTiles] = useState([]);
 
   useEffect(() => {
@@ -100,12 +100,12 @@ const getWeatherIcon = (weatherMain, description) => {
               justifyContent: 'center',
               alignItems: 'center',
               padding: "0rem",
-              filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",
               borderRadius: '18px',
               alignSelf: 'stretch',
               border: '5px solid #006FC8',
               height: '35vh',
-              marginBottom: '0.5rem'
+              marginBottom: '0.5rem',
+              position:'relative',
             }}
           >
             <div className="tileLeft">
@@ -115,7 +115,10 @@ const getWeatherIcon = (weatherMain, description) => {
             <div className="tileRight">
               <div className="tileRightTop">
                 <h2 className="temperatureText">
-                  {Math.round(tile.weather.main.temp)}<span className="degree">&nbsp;°C&nbsp;</span>
+                  {isFahrenheit
+                    ? Math.round((tile.weather.main.temp * 9) / 5 + 32)
+                    : Math.round(tile.weather.main.temp)}
+                  <span className="degree">&nbsp;°{isFahrenheit ? 'F' : 'C'}&nbsp;</span>
                 </h2>
               </div>
               <div className="tileRightButtom">
@@ -129,7 +132,8 @@ const getWeatherIcon = (weatherMain, description) => {
                 </div>
               </div>
             </div>
-            <button onClick={() => onFavorite({ lat: location.lat, lon: location.lon, name: tile.name })}
+            <button onClick={() => {const [lat, lon] = tile.id.split(',').map(Number);
+                  onFavorite({ lat, lon, name: tile.name })}}   
                   className="favButton"
                   aria-label="Add to favorites">
               <img src={heart} className="heart"></img>

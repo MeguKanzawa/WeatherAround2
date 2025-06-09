@@ -4,6 +4,8 @@ import logo from './assets/logo.svg';
 import contact from './assets/contact.svg';
 import help from './assets/help.svg';
 import tech from './assets/laptop.svg'
+import linkedin from './assets/linkedin.svg'
+import email from './assets/mail.svg'
 
 function NavBar() {
     const [showContact, setShowContact] = useState(false);
@@ -13,7 +15,7 @@ function NavBar() {
         <div className="logoBar">
             <div className="logoArea">
                 <img src={logo} alt="logo" className="logo" />
-                <div className="weatherAround">Weather Around You</div>
+                <div className="weatherAround">WeatherAround</div>
             </div>
             <div className="techArea">
                 <div className="tech" onClick={() => setShowTech(true)}>
@@ -24,7 +26,7 @@ function NavBar() {
             <div className="contactArea">
                 <div className="contact" onClick={() => setShowContact(true)}>
                     <img src={contact} alt="Contact" className="contactLogo" />
-                    <div className="contactMe">Contact Me</div>
+                    <div className="contactMe">Contact</div>
                 </div>
             </div>
             <div className = "helpArea">
@@ -52,8 +54,15 @@ function NavBar() {
                 <div className="modalOverlay" onClick={() => setShowContact(false)}>
                     <div className="modalContent" onClick={(e) => e.stopPropagation()}>
                         <h2>Contact Me</h2>
-                        <p>Email: megknzw@gmail.com</p>
-                        <p>LinkedIn: https://www.linkedin.com/in/megu-kanz/</p>
+                        <div>
+                            <a href = "mailto:megknzw@gmail.com?subject=subject text" style={{display: 'flex', justifyContent: 'center', alignItems: 'center', padding:'0.5rem'}}>
+                            <img src={email}></img>&nbsp;megknzw@gmail.com&nbsp;</a>
+                        </div>
+                        <div >
+                            <a href="LinkedIn: https://www.linkedin.com/in/megu-kanz/" style={{display: 'flex', justifyContent: 'center', alignItems: 'center', padding:'0.5rem'}}>
+                            <img src={linkedin}></img>&nbsp;www.linkedin.com/in/megu-kanz/&nbsp;</a>
+                        </div>
+                        
                         <button onClick={() => setShowContact(false)}>CLOSE</button>
                     </div>
                 </div>

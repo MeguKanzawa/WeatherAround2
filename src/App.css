@@ -1,21 +1,32 @@
 html, body, #root {
-  height: auto;
-  margin: 0;
-  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin:0;
+  padding:0;
+}
+
+#root > div {
+  flex: 1;
+}
+
+#root {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  text-align: center;
+  background: linear-gradient(180deg, #FFFFFF 0%, #92CEFF 100%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-sizing: border-box;
 }
 
 
-#root {
-  width:100vw;
-  min-height:100vh;
-  margin: 0 auto;
-  padding-left: 2rem;
-  padding-right:2rem;
-  text-align: center;
-  background: linear-gradient(180deg, #FFFFFF 0%, #92CEFF 100%);
-  background-attachment: fixed; /* optional: makes gradient stick visually during scroll */
-  background-repeat: no-repeat;
-  background-size: cover;
+body {
+  overflow-x:hidden;
 }
 
 @font-face {
@@ -24,3 +35,119 @@ html, body, #root {
   font-weight: normal;
   font-style: normal;
 }
+
+.footer {
+  height: 20vh;
+  width: 100vw;
+  margin-left: -2rem;
+  background: linear-gradient(90deg, #006FC8 0%, #D519C8 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'SF Pro Display';
+  font-size: 1rem;
+  font-weight: 500;
+  /* Remove sticky positioning */
+  position: static;
+  margin-top: auto; /* pushes it to bottom if needed */
+  font-family: 'SF Pro Display';
+}
+.center {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 72vh;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.map-panel, .weather-panel, .favorites-panel {
+  flex: 1 1 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 0.2rem;
+  box-sizing: border-box;
+}
+
+.tooltip {
+  position: absolute;
+  background-color: black;
+  color: white;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  max-width: 240px;
+  z-index: 1000;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.3s ease;
+}
+
+.tooltip::after {
+  content: '';
+  position: absolute;
+  border-width: 6px;
+  border-style: solid;
+}
+
+.tooltip[data-position='top']::after {
+  bottom: -12px;
+  left: calc(50% - 6px);
+  border-color: black transparent transparent transparent;
+}
+
+.tooltip[data-position='bottom']::after {
+  top: -12px;
+  left: calc(50% - 6px);
+  border-color: transparent transparent black transparent;
+}
+
+
+/* Make map and weather panels stack vertically on mobile */
+@media screen and (max-width: 768px) {
+  #root {
+    padding:1rem;
+    max-width:768px;
+    height:300vh;
+  }
+
+  .center {
+    flex-direction: column;
+    height: 120vh;
+  }
+
+  .map-panel, .weather-panel {
+    width: 100%;
+    height: auto;
+    min-height: auto;
+    flex: none;
+  }
+
+  .weather-panel {
+    flex:none;
+    overflow-y: auto;
+    min-height:72vh;
+  }
+
+  .temp-toggle-btn {
+    width: auto; /* Prevent button from stretching */
+    max-width: 160px; /* Fixed size */
+    align-self: flex-end;
+  }
+
+    .footer {
+      height:10vh;   
+      font-size:0.7rem;
+      margin-left: -1rem;
+    }
+
+    .favorites-panel {
+      width:100%;
+      height:auto;
+      min-height:auto;
+      flex:none;
+    }
+}
+

@@ -1,31 +1,30 @@
 .directions {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  padding: 0rem 1rem;
 }
+
 
 .pinImg {
     width: 20px;
     height: 20px;
+    padding-right:0.5rem;
 }
 
 .addPinText {
-
-    font-family: 'SF Pro Display';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 18px;
-    /* identical to box height */
-    display: flex;
-    align-items: center;
-
-    color: #006FC8;
-
-
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  font-family: 'SF Pro Display';
+  font-size: 16px;
+  color: #006FC8;
+  padding: 0;
 }
+
 
 .pinText {
 
@@ -45,4 +44,34 @@
     text-fill-color: transparent;
 
 
+}
+.temp-toggle-btn {
+  padding: 0.4rem 1rem;
+  font-size: 1rem;
+  font-family: 'SF Pro Display';
+  background: linear-gradient(90.6deg, #006FC8 -0.33%, #D519C8 114.1%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.temp-toggle-btn:hover {
+  background-color: #004a91;
+}
+@media screen and (max-width: 768px) {
+    .directions {
+        height:5vh;
+
+    }
+
+  .temp-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
